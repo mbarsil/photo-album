@@ -1,1 +1,11 @@
-Hello World!
+<mat-toolbar color="primary">
+    <span>Photo Album</span>
+</mat-toolbar>
+
+<div class="nav-bar">
+    <a mat-button routerLink="/photo-album" routerLinkActive="active">Photo Album</a>
+    <a mat-button routerLink="/liked-photos" routerLinkActive="active">Liked Photos</a>
+</div>
+
+
+<router-outlet></router-outlet>
