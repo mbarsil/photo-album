@@ -1,5 +1,5 @@
 <div class="photo-album-container">
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate class="photo-search-form">
+    <form #f="ngForm" (ngSubmit)="onSearch(f)" novalidate class="photo-search-form">
         <mat-form-field class="photo-search-input">
             <input name="first" ngModel required #first="ngModel" matInput placeholder="Search for pictures">
         </mat-form-field>
@@ -10,7 +10,7 @@
             <mat-grid-tile-header>{{ph.title}}</mat-grid-tile-header>
             <img src="{{ph.url_m}}">
             <mat-grid-tile-footer>
-                <button mat-flat-button class="mat-primary">Like</button>
+                <button (click)="onFavorite(i, ph.url_m, ph.title)" mat-flat-button class="mat-primary">Like</button>
             </mat-grid-tile-footer>
         </mat-grid-tile>
     </mat-grid-list>
