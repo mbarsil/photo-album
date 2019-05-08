@@ -18,12 +18,14 @@ import { Photo } from '../../models/photo.model';
 })
 export class PhotoAlbumComponent implements OnInit {
 
-  photos: object[] = [];
+  // photos: object[] = [];
+  photosState: Observable<object[]>;
   searchTerm: string;
 
   constructor(private photoService: PhotoService, private store: Store<PhotoAlbumReducers.AppState>) { }
 
   ngOnInit() {
+    this.photosState =  this.store.select('photos');
     this.retrievePhotos();
   }
 
@@ -31,8 +33,9 @@ export class PhotoAlbumComponent implements OnInit {
     this.photoService.get(this.searchTerm)
       .subscribe(
         (response) => {
-          this.photos = response.photos.photo && response.photos.photo;
-          console.log(this.photos);
+          this.store.dispatch(new PhotoAlbumActions.SetPhotos(response.photos.photo));
+          // this.photos = response.photos.photo && response.photos.photo;
+          // console.log(this.photos);
         },
           (err) => console.log(err)
       );
