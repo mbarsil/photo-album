@@ -8,7 +8,8 @@ export interface AppState {
 
 export interface State {
   searchTerm: string;
-  photos: Photo[];
+  photos: object[];
+  favorites: Photo[];
 }
 
 const initialState: State = {
@@ -16,7 +17,8 @@ const initialState: State = {
   photos: [
     new Photo('Sample photo 1', 'https://via.placeholder.com/350', false),
     new Photo('Sample photo 2', 'https://via.placeholder.com/350', false),
-  ]
+  ],
+  favorites: []
 };
 
 export function photoAlbumReducer(state = initialState, action: PhotoAlbumActions.PhotoAlbumActions) {
@@ -34,6 +36,12 @@ export function photoAlbumReducer(state = initialState, action: PhotoAlbumAction
         ...state,
         photos
       };
+    case PhotoAlbumActions.SET_PHOTOS:
+      debugger;
+      return {
+        ...state,
+        photos: [...action.payload]
+      };
     case PhotoAlbumActions.SEARCH_TERM:
       const searchTerm = action.payload;
       return {
@@ -45,5 +53,3 @@ export function photoAlbumReducer(state = initialState, action: PhotoAlbumAction
   }
 }
 
-export class PhotoAlbumReducer {
-}

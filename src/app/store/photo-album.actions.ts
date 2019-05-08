@@ -3,6 +3,7 @@ import { Action } from '@ngrx/store';
 import { Photo } from '../models/photo.model';
 
 export const FAVORITE_PHOTO = 'FAVORITE_PHOTO';
+export const SET_PHOTOS = 'SET_PHOTOS';
 export const SEARCH_TERM = 'SEARCH_TERM';
 
 export class FavoritePhoto implements Action {
@@ -11,10 +12,10 @@ export class FavoritePhoto implements Action {
   constructor(public payload: {index: number, photo: Photo}) {}
 }
 
-export class FavoritePhoto implements Action {
-  readonly type = FAVORITE_PHOTO;
+export class SetPhotos implements Action {
+  readonly type = SET_PHOTOS;
 
-  constructor(public payload: {index: number, photo: Photo}) {}
+  constructor(public payload: {photos: object[]}) {}
 }
 
 export class SearchTerm implements Action {
@@ -24,4 +25,4 @@ export class SearchTerm implements Action {
 }
 
 export type PhotoAlbumActions =
-  FavoritePhoto | SearchTerm;
+  FavoritePhoto | SearchTerm | SetPhotos;

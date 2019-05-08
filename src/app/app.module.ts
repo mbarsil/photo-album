@@ -7,7 +7,6 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppRoutingModule } from './app-routing.module';
 import { MaterialModule } from './material.module';
-import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component';
 import { PhotoAlbumComponent } from './components/photo-album/photo-album.component';
@@ -29,7 +28,7 @@ import { photoAlbumReducer } from './store/photo-album.reducers';
     FormsModule,
     MaterialModule,
     StoreModule.forRoot({photoAlbum: photoAlbumReducer}),
-    !environment ? StoreDevtoolsModule.instrument() : []
+    StoreDevtoolsModule.instrument()
   ],
   providers: [],
   bootstrap: [AppComponent]
