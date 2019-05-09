@@ -6,6 +6,11 @@ import {LikedPhotosComponent} from './components/liked-photos/liked-photos.compo
 const routes: Routes = [
   { path: 'photo-album',  component: PhotoAlbumComponent },
   { path: 'liked-photos', component: LikedPhotosComponent },
+  { path: '',
+    redirectTo: 'photo-album',
+    pathMatch: 'full'
+  },
+  { path: '**', component: PhotoAlbumComponent }
 ];
 
 @NgModule({
