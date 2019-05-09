@@ -15,6 +15,13 @@ A similar disposition has been used for the liked pictures, using a message to i
 
 The color schem is based on Angular Material itself, and for the subheader a color scheme generator has been used for proper contrast and combinations.
 
+### Flow
+The application landing page is ```/photo-album```, which will be also redirecto to from any non existing route or ```/```. Here the user can favorite the default pictures loaded from the initial state, or search for new pictures using the search bar.
+A brief message will be displayed if a photo is favorited.
+
+Then the user can navigate to the ***Liked photos*** section to see his/her favorite pictures. This pictures will be available no matter what the user 
+searches for in the main page.
+
 ### Project structure
 The project structure follows the one established by the Angular CLI. However, to host the components, a directory ```components``` has been created. Since this project is small, no further organization is needed, but should it grow, the choice would be to structure the project by functional/feature modules so it would scale easily.
 
