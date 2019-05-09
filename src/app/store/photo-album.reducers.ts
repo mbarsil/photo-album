@@ -15,8 +15,14 @@ export interface State {
 const initialState: State = {
   searchTerm: '',
   photos: [
-    new Photo('Sample photo 1', 'https://via.placeholder.com/350', false),
-    new Photo('Sample photo 2', 'https://via.placeholder.com/350', false),
+    {
+      title: 'Sample photo 1',
+      url_m: 'https://live.staticflickr.com/65535/40843306653_19f7c77edb.jpg'
+    },
+    {
+      title: 'Sample photo 2',
+      url_m: 'https://live.staticflickr.com/65535/47809581621_1bf4c53b03.jpg'
+    }
   ],
   favorites: []
 };
