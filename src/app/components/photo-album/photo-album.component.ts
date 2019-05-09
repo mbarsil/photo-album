@@ -19,17 +19,17 @@ import { Photo } from '../../models/photo.model';
 export class PhotoAlbumComponent implements OnInit {
 
   photosState: Observable<PhotoAlbumReducers.State>;
-  searchTerm: string;
+  searchTerm: Observable<string>;
 
   constructor(private photoService: PhotoService, private store: Store<PhotoAlbumReducers.AppState>) { }
 
   ngOnInit() {
     this.photosState =  this.store.select(state => state.photoAlbum);
-    this.retrievePhotos();
+    this.searchTerm =  this.store.select(state => state.photoAlbum.searchTerm);
   }
 
-  retrievePhotos() {
-    this.photoService.get(this.searchTerm)
+  retrievePhotos(term: string) {
+    this.photoService.get(term)
       .subscribe(
         (response) => {
           this.store.dispatch(new PhotoAlbumActions.SetPhotos((<any>response).photos.photo));
@@ -39,9 +39,8 @@ export class PhotoAlbumComponent implements OnInit {
   }
 
   onSearch(f: NgForm) {
-    this.searchTerm = f.value.first;
-    this.store.dispatch(new PhotoAlbumActions.SearchTerm(this.searchTerm));
-    this.retrievePhotos();
+    this.store.dispatch(new PhotoAlbumActions.SearchTerm(f.value.first));
+    this.retrievePhotos(f.value.first);
   }
 
   onFavorite(index: number, url: string, title: string) {
