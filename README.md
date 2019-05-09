@@ -46,6 +46,9 @@ To model the state, a type ```State``` has been created, following the structure
 
 ### Testing
 Due to timing matters, no unit tests have been added, though I am fully aware of the importance of this, and this is a mandatory part of the project, whether it is normal unit testing, TDD, or even ATDD if possible.
+Only the basic setup for mocking dependencies and providers has been added,
+however given more time all functionality for components and the service would be tested,
+as well as the store.
 
 ## Additional work and improvements
 While the provided solution is fully functional, some improvements could be added for better scalability and maintainability should the application grow. At the current moment they might complicate the application unnecessarily, but the following are worth mentioning:
