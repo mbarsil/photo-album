@@ -37,7 +37,6 @@ export function photoAlbumReducer(state = initialState, action: PhotoAlbumAction
         photos
       };
     case PhotoAlbumActions.SET_PHOTOS:
-      debugger;
       return {
         ...state,
         photos: [...action.payload]
@@ -52,4 +51,3 @@ export function photoAlbumReducer(state = initialState, action: PhotoAlbumAction
       return state;
   }
 }
-

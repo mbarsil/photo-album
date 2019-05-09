@@ -15,7 +15,7 @@ export class FavoritePhoto implements Action {
 export class SetPhotos implements Action {
   readonly type = SET_PHOTOS;
 
-  constructor(public payload: {photos: object[]}) {}
+  constructor(public payload: object[]) {}
 }
 
 export class SearchTerm implements Action {

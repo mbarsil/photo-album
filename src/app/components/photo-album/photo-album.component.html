@@ -5,9 +5,8 @@
         </mat-form-field>
     </form>
 
-    <mat-grid-list cols="3" rowHeight="1:1">
-        <!--<mat-grid-tile *ngFor="let ph of photos; index as i;">-->
-        <mat-grid-tile *ngFor="let ph of (photosState | async).photos; index as i;">
+    <mat-grid-list cols="3" rowHeight="1:1"  *ngIf="photosState | async as mainState">
+        <mat-grid-tile *ngFor="let ph of mainState.photos; index as i;">
             <mat-grid-tile-header>{{ph.title}}</mat-grid-tile-header>
             <img src="{{ph.url_m}}">
             <mat-grid-tile-footer>
