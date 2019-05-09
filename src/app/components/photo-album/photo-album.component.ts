@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 
+import {MatSnackBar} from '@angular/material';
+
 import { PhotoService } from '../../services/photo.service';
 import * as PhotoAlbumActions from '../../store/photo-album.actions';
 import * as PhotoAlbumReducers from '../../store/photo-album.reducers';
@@ -21,7 +23,10 @@ export class PhotoAlbumComponent implements OnInit {
   photosState: Observable<PhotoAlbumReducers.State>;
   searchTerm: Observable<string>;
 
-  constructor(private photoService: PhotoService, private store: Store<PhotoAlbumReducers.AppState>) { }
+  constructor(
+    private photoService: PhotoService,
+    private store: Store<PhotoAlbumReducers.AppState>,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.photosState =  this.store.select(state => state.photoAlbum);
@@ -45,6 +50,7 @@ export class PhotoAlbumComponent implements OnInit {
 
   onFavorite(index: number, url: string, title: string) {
     const photo = new Photo(title, url, true);
+    this.snackBar.open('Photo liked!', '', { duration: 1000});
     this.store.dispatch(new PhotoAlbumActions.FavoritePhoto({index, photo}));
   }
 

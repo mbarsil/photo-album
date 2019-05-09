@@ -5,9 +5,9 @@ import {
   MatCardModule,
   MatButtonModule,
   MatGridListModule,
-  MatInputModule
+  MatInputModule,
+  MatSnackBarModule
 } from '@angular/material';
-
 
 @NgModule({
   imports: [],
@@ -17,7 +17,8 @@ import {
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ]
 })
 
