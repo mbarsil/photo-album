@@ -1,3 +1,8 @@
-<p>
-  liked-photos works!
-</p>
+<div class="liked-photos-container">
+    <mat-grid-list cols="3" rowHeight="1:1"  *ngIf="photosState | async as mainState">
+        <mat-grid-tile *ngFor="let ph of mainState.favorites; index as i;">
+            <mat-grid-tile-header>{{ph.title}}</mat-grid-tile-header>
+            <img src="{{ph.url}}">
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
