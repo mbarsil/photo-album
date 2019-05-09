@@ -48,5 +48,5 @@ While the provided solution is fully functional, some improvements could be adde
 * Adding the **unlike** functionality. For this it would be necessary to add information to identify the pictures to unlike.
 * Adding pagination to both paths in the application, and virtual scroll.
 * Babel aliases for ```import``` statements.
-
+* Add a ```loading``` property to the state to show an spinner while the API returns the photos.
 
