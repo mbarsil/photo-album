@@ -1,7 +1,7 @@
 <h4>{{message}}</h4>
 
 <div class="liked-photos-container">
-    <mat-grid-list cols="3" rowHeight="1:1"  *ngIf="photosState | async as mainState">
+    <mat-grid-list cols="5" rowHeight="1:1"  *ngIf="photosState | async as mainState">
         <mat-grid-tile *ngFor="let ph of mainState.favorites; index as i;">
             <mat-grid-tile-header>{{ph.title}}</mat-grid-tile-header>
             <img src="{{ph.url}}">
