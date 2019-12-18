@@ -27,7 +27,9 @@ The project structure follows the one established by the Angular CLI. However, t
 
 For the same reasons the store for the project is hosted right below app level, in the ```store``` directory. If the application had to grow and had several functional modules, this would most likely be moved to the inside of said modules, and kept separately for each one.
 
-A third new directory has been created, ```models```, where the models live, in this case the ```Photo``` model, used to shape the state for the favorites photos.
+A third new directory has been created, ```interfaces```, where the type definitions live. There are a few to define structures for the data used in the application and have better typing.
+
+Finally the service used to reach the Flickr API is placed in the ```service``` directory.
 
 ### Application state
 The modeled state for the application is the following:
