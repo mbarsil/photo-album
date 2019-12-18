@@ -8,7 +8,8 @@ import { Observable, Subscription } from 'rxjs';
 
 import * as PhotoAlbumActions from '../../store/photo-album.actions';
 import * as PhotoAlbumReducers from '../../store/photo-album.reducers';
-import { Photo } from '../../models/photo.model';
+
+import { FlickrResponse, FavPhoto, FlickerPhoto, Photo } from '../../interfaces/common.interfaces';
 
 import { PhotoService } from '../../services/photo.service';
 
@@ -46,7 +47,11 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
   }
 
   onFavorite(index: number, url: string, title: string): void {
-    const photo = new Photo(title, url, true);
+    const photo: FavPhoto = {
+      title,
+      url_m: url,
+      favorite: true
+    };
 
     this.snackBar.open('Photo liked!', '', { duration: 1000});
     this.store.dispatch(new PhotoAlbumActions.FavoritePhoto({index, photo}));
@@ -55,10 +60,22 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
   private retrievePhotos(term: string): void {
     this.subscription = this.photoService.get(term)
       .subscribe(
-        (response: any) => {
-          this.store.dispatch(new PhotoAlbumActions.SetPhotos((response as any).photos.photo));
+        (response: FlickrResponse) => {
+          this.updateAppState(response);
         },
-        (err) => console.error(err)
+        (err: any) => console.error(err)
       );
+  }
+
+  private updateAppState({ photos: { photo }}: FlickrResponse): void {
+    const filteredResponse = photo.map((photoItem: FlickerPhoto) => {
+      const { title, url_m } = photoItem;
+      const reducedPhoto: Photo = { title, url_m };
+
+      return reducedPhoto;
+    });
+
+    this.store
+      .dispatch(new PhotoAlbumActions.SetPhotos(filteredResponse));
   }
 }

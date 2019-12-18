@@ -1,6 +1,6 @@
 import * as PhotoAlbumActions from './photo-album.actions';
 
-import { Photo } from '../models/photo.model';
+import { FavPhoto, Photo } from '../interfaces/common.interfaces';
 
 export interface AppState {
   photoAlbum: State;
@@ -8,8 +8,8 @@ export interface AppState {
 
 export interface State {
   searchTerm: string;
-  photos: object[];
-  favorites: Photo[];
+  photos: Photo[];
+  favorites: FavPhoto[];
 }
 
 const initialState: State = {
@@ -30,8 +30,8 @@ const initialState: State = {
 export function photoAlbumReducer(state = initialState, action: PhotoAlbumActions.PhotoAlbumActions) {
   switch (action.type) {
     case PhotoAlbumActions.FAVORITE_PHOTO:
-      const {payload: { photo: likedPhoto}} = action;
-      const favorites = [...state.favorites, likedPhoto];
+      const { payload: { photo: likedPhoto }} = action;
+      const favorites = [ ...state.favorites, likedPhoto ];
 
       return {
         ...state,

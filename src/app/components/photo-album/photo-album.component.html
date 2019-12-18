@@ -20,8 +20,8 @@
     cols="5"
     rowHeight="1:1">
     <mat-grid-tile *ngFor="let ph of mainState.photos; index as i;">
-      <mat-grid-tile-header>{{ph.title}}</mat-grid-tile-header>
-      <img src="{{ph.url_m}}">
+      <mat-grid-tile-header>{{ ph.title }}</mat-grid-tile-header>
+      <img src="{{ ph.url_m }}">
       <mat-grid-tile-footer>
         <button
           mat-flat-button
