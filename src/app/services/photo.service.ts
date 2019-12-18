@@ -15,7 +15,7 @@ export class PhotoService {
   get(searchText: string) {
     let params = new HttpParams();
 
-    params = params.append('api_key', '8fa254190ec943ff6dd2558a1dbbbe74');
+    params = params.append('api_key', 'ee5665d3d13323f2395839f6ed0b2de1');
     params = params.append('text', searchText);
     params = params.append('extras', 'url_m');
     params = params.append('format', 'json');
