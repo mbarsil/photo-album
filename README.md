@@ -1,11 +1,11 @@
-# AngularTestTask
+# Sample Frontend Application
 
 ## Overview
-This test has been carried out following the instructions given by Ciklum on behalf of the Novax team. In order to do it certain decisions have been made, that will be laid out in the following sections.
+This project aims to provide an overview of the programmers ability to handle Angular, API's, Javascript in general, reactive programming using Rxjs and the usage of stage management tools like Ngrx.
 
-It is important to point out that in order to not extend the delivery of the task for too long, certain improvements are only indicated as next steps. Some of them would be and overkill due to the simplicity of the task but interesting to include for better scalability nonetheless.
+The final result is based on the programmers experience and research on documentation and related resources, so any advice on improvements is welcome.
 
-Also, the final result is based on the programmers experience and research on documentation and related resources, so any advice on improvements is welcome.
+The main flow of this sample application is to offer a list of photos from the Flickr public API, and allow to search and favorite them, showing a list of the favorited photos in a secondary path.
 
 ## Design Decisions
 ### User interface
