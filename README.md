@@ -44,7 +44,7 @@ To update the state, there are several actions provided:
 * ```SEARCH_TERM```: to store the most recently used search term by the user.
 * ```SET_PHOTOS```: to store the photos retrieved from the API.
 
-To model the state, a type ```State``` has been created, following the structure described previously. The favorite property in the state uses the ```Photo``` model, defined as a class in the ```models``` directory.
+To model the state, a type ```State``` has been created, following the structure described previously. The favorite property in the state uses the ```FavPhoto``` type, defined as an interface.
 
 ### Testing
 Due to timing matters, no unit tests have been added, though I am fully aware of the importance of this, and this is a mandatory part of the project, whether it is normal unit testing, TDD, or even ATDD if possible.
