@@ -19,7 +19,6 @@ import { PhotoService } from '../../services/photo.service';
   providers: [ PhotoService ]
 })
 export class PhotoAlbumComponent implements OnInit, OnDestroy {
-
   photosState: Observable<PhotoAlbumReducers.State>;
   searchTerm: Observable<string>;
   private subscription: Subscription;
@@ -27,9 +26,10 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
   constructor(
     private photoService: PhotoService,
     private store: Store<PhotoAlbumReducers.AppState>,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar
+  ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.photosState =  this.store.select(state => state.photoAlbum);
     this.searchTerm =  this.store.select(state => state.photoAlbum.searchTerm);
   }
@@ -40,25 +40,25 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
     }
   }
 
-  retrievePhotos(term: string) {
-    this.subscription = this.photoService.get(term)
-      .subscribe(
-        (response) => {
-          this.store.dispatch(new PhotoAlbumActions.SetPhotos((response as any).photos.photo));
-        },
-        (err) => console.log(err)
-      );
-  }
-
-  onSearch(f: NgForm) {
+  onSearch(f: NgForm): void {
     this.store.dispatch(new PhotoAlbumActions.SearchTerm(f.value.first));
     this.retrievePhotos(f.value.first);
   }
 
-  onFavorite(index: number, url: string, title: string) {
+  onFavorite(index: number, url: string, title: string): void {
     const photo = new Photo(title, url, true);
+
     this.snackBar.open('Photo liked!', '', { duration: 1000});
     this.store.dispatch(new PhotoAlbumActions.FavoritePhoto({index, photo}));
   }
 
+  private retrievePhotos(term: string): void {
+    this.subscription = this.photoService.get(term)
+      .subscribe(
+        (response: any) => {
+          this.store.dispatch(new PhotoAlbumActions.SetPhotos((response as any).photos.photo));
+        },
+        (err) => console.error(err)
+      );
+  }
 }
