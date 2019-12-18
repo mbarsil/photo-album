@@ -6,8 +6,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class PhotoService {
-
   photos = new Subject();
+
   constructor(
     private http: HttpClient
   ) { }
