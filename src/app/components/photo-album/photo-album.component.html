@@ -1,17 +1,35 @@
 <div class="photo-album-container">
-    <form #f="ngForm" (ngSubmit)="onSearch(f)" novalidate class="photo-search-form">
-        <mat-form-field class="photo-search-input">
-            <input name="first" ngModel required #first="ngModel" matInput placeholder="Search for pictures">
-        </mat-form-field>
-    </form>
+  <form
+    #f="ngForm"
+    novalidate
+    class="photo-search-form"
+    (ngSubmit)="onSearch(f)">
+    <mat-form-field class="photo-search-input">
+      <input
+        #first="ngModel"
+        ngModel
+        required
+        matInput
+        name="first"
+        placeholder="Search for pictures">
+    </mat-form-field>
+  </form>
 
-    <mat-grid-list cols="5" rowHeight="1:1"  *ngIf="photosState | async as mainState">
-        <mat-grid-tile *ngFor="let ph of mainState.photos; index as i;">
-            <mat-grid-tile-header>{{ph.title}}</mat-grid-tile-header>
-            <img src="{{ph.url_m}}">
-            <mat-grid-tile-footer>
-                <button (click)="onFavorite(i, ph.url_m, ph.title)" mat-flat-button class="mat-primary">Like</button>
-            </mat-grid-tile-footer>
-        </mat-grid-tile>
-    </mat-grid-list>
+  <mat-grid-list
+    *ngIf="photosState | async as mainState"
+    cols="5"
+    rowHeight="1:1">
+    <mat-grid-tile *ngFor="let ph of mainState.photos; index as i;">
+      <mat-grid-tile-header>{{ph.title}}</mat-grid-tile-header>
+      <img src="{{ph.url_m}}">
+      <mat-grid-tile-footer>
+        <button
+          mat-flat-button
+          class="mat-primary"
+          (click)="onFavorite(i, ph.url_m, ph.title)">
+          Like
+        </button>
+      </mat-grid-tile-footer>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>
