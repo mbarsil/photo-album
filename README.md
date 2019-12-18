@@ -50,6 +50,11 @@ Only the basic setup for mocking dependencies and providers has been added,
 however given more time all functionality for components and the service would be tested,
 as well as the store.
 
+## Code style
+This application has been created following the Angular styleguide, along with coding patterns that I believe provide readability and maintainbility to the project, based on experience.
+
+This style is enforced by the usage of TSLint, and a ```tslint.json``` file that includes some standard rules and others added by myself. Also, **Husky** has been used to set up **Git Hooks** for disallowing pushes to the repository without running **ng lint** first. 
+
 ## Additional work and improvements
 While the provided solution is fully functional, some improvements could be added for better scalability and maintainability should the application grow. At the current moment they might complicate the application unnecessarily, but the following are worth mentioning:
 

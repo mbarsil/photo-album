@@ -42,4 +42,3 @@ describe('LikedPhotosComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-

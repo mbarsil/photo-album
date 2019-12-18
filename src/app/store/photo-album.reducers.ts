@@ -30,8 +30,9 @@ const initialState: State = {
 export function photoAlbumReducer(state = initialState, action: PhotoAlbumActions.PhotoAlbumActions) {
   switch (action.type) {
     case PhotoAlbumActions.FAVORITE_PHOTO:
-      const {payload: { index: favIndex , photo: likedPhoto}} = action;
+      const {payload: { photo: likedPhoto}} = action;
       const favorites = [...state.favorites, likedPhoto];
+
       return {
         ...state,
         favorites
@@ -43,6 +44,7 @@ export function photoAlbumReducer(state = initialState, action: PhotoAlbumAction
       };
     case PhotoAlbumActions.SEARCH_TERM:
       const searchTerm = action.payload;
+
       return {
         ...state,
         searchTerm

@@ -1,22 +1,22 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { NgForm } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
 
 import { MatSnackBar } from '@angular/material';
 
-import { PhotoService } from '../../services/photo.service';
+import { Observable, Subscription } from 'rxjs';
+
 import * as PhotoAlbumActions from '../../store/photo-album.actions';
 import * as PhotoAlbumReducers from '../../store/photo-album.reducers';
 import { Photo } from '../../models/photo.model';
 
-
+import { PhotoService } from '../../services/photo.service';
 
 @Component({
   selector: 'app-photo-album',
   templateUrl: './photo-album.component.html',
   styleUrls: ['./photo-album.component.scss'],
-  providers: [PhotoService]
+  providers: [ PhotoService ]
 })
 export class PhotoAlbumComponent implements OnInit, OnDestroy {
 
@@ -35,14 +35,16 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription && this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   retrievePhotos(term: string) {
     this.subscription = this.photoService.get(term)
       .subscribe(
         (response) => {
-          this.store.dispatch(new PhotoAlbumActions.SetPhotos((<any>response).photos.photo));
+          this.store.dispatch(new PhotoAlbumActions.SetPhotos((response as any).photos.photo));
         },
         (err) => console.log(err)
       );
