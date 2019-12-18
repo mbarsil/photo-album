@@ -4,6 +4,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import * as PhotoAlbumReducers from '../../store/photo-album.reducers';
+import { AppState, State } from '../../store/photo-album.reducers';
 
 const EMPTY_FAVORITES_MSG = 'You don\'t have any favorite photos yet';
 const POPULATED_FAVORITES_MSG = 'Here you have your favorite photos';
@@ -23,7 +24,7 @@ export class LikedPhotosComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.photosState =  this.store.select(state => state.photoAlbum);
+    this.photosState =  this.store.select((state: AppState) => state.photoAlbum);
     this.updateMessage();
   }
 
@@ -35,8 +36,8 @@ export class LikedPhotosComponent implements OnInit, OnDestroy {
 
   updateMessage() {
     this.subscription = this.photosState.subscribe(
-      (response: any) => {
-        this.message = response.favorites.length > 0 ?
+      (state: State) => {
+        this.message = state.favorites.length > 0 ?
           POPULATED_FAVORITES_MSG :
           EMPTY_FAVORITES_MSG;
       },

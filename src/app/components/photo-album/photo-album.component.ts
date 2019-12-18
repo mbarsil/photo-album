@@ -8,6 +8,7 @@ import { Observable, Subscription } from 'rxjs';
 
 import * as PhotoAlbumActions from '../../store/photo-album.actions';
 import * as PhotoAlbumReducers from '../../store/photo-album.reducers';
+import { AppState } from '../../store/photo-album.reducers';
 
 import { FlickrResponse, FavPhoto, FlickerPhoto, Photo } from '../../interfaces/common.interfaces';
 
@@ -31,8 +32,8 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
-    this.photosState =  this.store.select(state => state.photoAlbum);
-    this.searchTerm =  this.store.select(state => state.photoAlbum.searchTerm);
+    this.photosState =  this.store.select((state: AppState) => state.photoAlbum);
+    this.searchTerm =  this.store.select((state: AppState) => state.photoAlbum.searchTerm);
   }
 
   ngOnDestroy(): void {
