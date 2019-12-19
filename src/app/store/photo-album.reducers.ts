@@ -1,6 +1,6 @@
 import * as PhotoAlbumActions from './photo-album.actions';
 
-import { FavPhoto, Photo } from '../interfaces/common.interfaces';
+import { Photo } from '../interfaces/common.interfaces';
 
 export interface AppState {
   photoAlbum: State;
@@ -9,7 +9,7 @@ export interface AppState {
 export interface State {
   searchTerm: string;
   photos: Photo[];
-  favorites: FavPhoto[];
+  favorites: Photo[];
 }
 
 const initialState: State = {
