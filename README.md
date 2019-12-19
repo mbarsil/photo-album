@@ -55,7 +55,9 @@ as well as the store.
 ## Code style
 This application has been created following the Angular styleguide, along with coding patterns that I believe provide readability and maintainbility to the project, based on experience.
 
-This style is enforced by the usage of TSLint, and a ```tslint.json``` file that includes some standard rules and others added by myself. Also, **Husky** has been used to set up **Git Hooks** for disallowing pushes to the repository without running **ng lint** first. 
+This style is enforced by the usage of TSLint, and a ```tslint.json``` file that includes some standard rules and others added by myself. Also, **Husky** has been used to set up **Git Hooks** for disallowing pushes to the repository without running **ng lint** first.
+
+Regarding the commit policy, they are done based on the functionality they group together, an following the [Angularjs commit convention](https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit). 
 
 ## Additional work and improvements
 While the provided solution is fully functional, some improvements could be added for better scalability and maintainability should the application grow. At the current moment they might complicate the application unnecessarily, but the following are worth mentioning:
