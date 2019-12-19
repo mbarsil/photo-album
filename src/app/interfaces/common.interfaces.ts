@@ -3,10 +3,6 @@ export interface Photo {
   url_m: string;
 }
 
-export interface FavPhoto extends Photo {
-  favorite: boolean;
-}
-
 export interface FlickrResponse {
   photos: FickerPhotoPage;
   stat: string;

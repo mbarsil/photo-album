@@ -1,7 +1,7 @@
 /* tslint:disable:max-classes-per-file */
 import { Action } from '@ngrx/store';
 
-import { Photo } from '../models/photo.model';
+import { Photo } from '../interfaces/common.interfaces';
 
 export const FAVORITE_PHOTO = 'FAVORITE_PHOTO';
 export const SET_PHOTOS = 'SET_PHOTOS';

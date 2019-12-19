@@ -10,7 +10,7 @@ import * as PhotoAlbumActions from '../../store/photo-album.actions';
 import * as PhotoAlbumReducers from '../../store/photo-album.reducers';
 import { AppState } from '../../store/photo-album.reducers';
 
-import { FlickrResponse, FavPhoto, FlickerPhoto, Photo } from '../../interfaces/common.interfaces';
+import { FlickrResponse, FlickerPhoto, Photo } from '../../interfaces/common.interfaces';
 
 import { PhotoService } from '../../services/photo.service';
 
@@ -48,10 +48,9 @@ export class PhotoAlbumComponent implements OnInit, OnDestroy {
   }
 
   onFavorite(index: number, url: string, title: string): void {
-    const photo: FavPhoto = {
+    const photo: Photo = {
       title,
-      url_m: url,
-      favorite: true
+      url_m: url
     };
 
     this.snackBar.open('Photo liked!', '', { duration: 1000});
