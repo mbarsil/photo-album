@@ -1,4 +1,4 @@
-# Sample Frontend Application
+# Photo Album - Angular + Rxjs + Ngrx
 
 ## Overview
 This project aims to provide an overview of the programmers ability to handle Angular, API's, Javascript in general, reactive programming using Rxjs and the usage of stage management tools like Ngrx.
